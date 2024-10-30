@@ -1,4 +1,7 @@
 require("config.options")
 require("config.keymaps")
 require("config.lazy")
-vim.cmd[[colorscheme tokyonight-moon]]
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
+
+
