@@ -27,10 +27,10 @@ return{
                     -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
                     -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
                 end,
-                max_name_length = 15,
-                max_prefix_length = 15,
+                max_name_length = 18,
+                max_prefix_length = 18,
                 truncate_names = true,
-                tab_size = 15,
+                tab_size = 18,
                 diagnostics = "nvim_lsp",
                 diagnostics_update_in_insert = false, -- only applies to coc
                 diagnostics_update_on_event = true, -- use nvim's diagnostic handler
