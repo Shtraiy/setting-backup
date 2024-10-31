@@ -77,7 +77,7 @@ return{
                     bg = 'none',
                 },
                 tab = {
-                    fg = '#ebdbb2',
+                    fg = '#928374',
                     bg = 'none',
                 },
                 tab_selected = {
@@ -103,21 +103,55 @@ return{
                     italic = false,
                 },
                 diagnostic = {
+                    fg = '#928374',
                     bg = 'none',
                 },
                 diagnostic_visible = {
+                    fg = '#928374',
                     bg = 'none',
                 },
                 diagnostic_selected = {
+                    fg = '#fabd2f',
+                    bg = 'none',
+                    bold = true,
+                    italic = false,
+                },
+                info = {
+                    fg = '#928374',
+                    bg = 'none',
+                },
+                info_visible = {
+                    fg = '#928374',
+                    bg = 'none',
+                },
+                info_selected = {
+                    bg = 'none',
+                    bold = true,
+                    italic = false,
+                },
+                info_diagnostic = {
+                    fg = '#928374',
+                    bg = 'none',
+                },
+                info_diagnostic_visible = {
+                    fg = '#928374',
+                    bg = 'none',
+                },
+                info_diagnostic_selected = {
+                    fg = '#fabd2f',
                     bg = 'none',
                     bold = true,
                     italic = false,
                 },
                 indicator_visible = {
+                    fg = '#928374',
                     bg = 'none',
                 },
                 indicator_selected = {
+                    fg = '#ebdbb2',
                     bg = 'none',
+                    bold = true,
+                    italic = false,
                 },
                 warning = {
                     bg = 'none',
@@ -131,13 +165,15 @@ return{
                     italic = false,
                 },
                 warning_diagnostic = {
-                    fg = 'none',
+                    fg = '#fe8019',
                     bg = 'none',
                 },
                 warning_diagnostic_visible = {
+                    fg = '#fe8019',
                     bg = 'none',
                 },
                 warning_diagnostic_selected = {
+                    fg = '#fe8019',
                     bg = 'none',
                     bold = true,
                     italic = false,
@@ -154,12 +190,15 @@ return{
                     italic = false,
                 },
                 error_diagnostic = {
+                    fg = '#fb4934',
                     bg = 'none',
                 },
                 error_diagnostic_visible = {
+                    fg = '#fb4934',
                     bg = 'none',
                 },
                 error_diagnostic_selected = {
+                    fg = '#fb4934',
                     bg = 'none',
                     bold = true,
                     italic = true,
