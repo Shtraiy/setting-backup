@@ -6,6 +6,7 @@ return{
             return " " .. icon .. count
         end,
         require('bufferline').setup({
+            
             options = {
                 mode = "buffers", -- set to "tabs" to only show tabpages instead
                 close_command = "bdelete! %d",       -- can be a string | function, | false see "Mouse actions"
@@ -20,13 +21,6 @@ return{
                 indicator = {
                     style = 'none',
                 },
-                name_formatter = function(buf)  -- buf contains:
-                    -- name                | str        | the basename of the active file
-                    -- path                | str        | the full path of the active file
-                    -- bufnr               | int        | the number of the active buffer
-                    -- buffers (tabs only) | table(int) | the numbers of the buffers in the tab
-                    -- tabnr (tabs only)   | int        | the "handle" of the tab, can be converted to its ordinal number using: `vim.api.nvim_tabpage_get_number(buf.tabnr)`
-                end,
                 max_name_length = 18,
                 max_prefix_length = 18,
                 truncate_names = true,
@@ -37,20 +31,6 @@ return{
                 -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
                 diagnostics_indicator = function(count, level, diagnostics_dict, context)
                     return "("..count..")"
-                end,
-                custom_filter = function(buf_number, buf_numbers)
-                    if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
-                        return true
-                    end
-                    if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
-                        return true
-                    end
-                    if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
-                        return true
-                    end
-                    if buf_numbers[1] ~= buf_number then
-                        return true
-                    end
                 end,
                 offsets = {
                     {
@@ -67,19 +47,6 @@ return{
                 show_duplicate_prefix = false,
                 separator_style = { '|', '|' },
                 enforce_regular_tabs = true,
-                always_show_bufferline = true,
-                auto_toggle_bufferline = true,
-                hover = {
-                    enabled = false,
-                    delay = 200,
-                    reveal = {'close'}
-                },
-                sort_by = function(buffer_a, buffer_b)
-                    -- add custom logic
-                    local modified_a = vim.fn.getftime(buffer_a.path)
-                    local modified_b = vim.fn.getftime(buffer_b.path)
-                    return modified_a > modified_b
-                end,
                 pick = {
                     alphabet = "abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ1234567890",
                 },
@@ -109,6 +76,22 @@ return{
                     fg = 'none',
                     bg = 'none',
                 },
+                tab = {
+                    fg = '#ebdbb2',
+                    bg = 'none',
+                },
+                tab_selected = {
+                    fg = '#ebdbb2',
+                    bg = 'none',
+                },
+                tab_separator = {
+                    fg = '#ebdbb2',
+                    bg = 'none',
+                },
+                tab_separator_selected = {
+                    fg = '#ebdbb2',
+                    bg = 'none',
+                },
                 buffer_visible = {
                     fg = '#928374',
                     bg = 'none',
@@ -120,38 +103,29 @@ return{
                     italic = false,
                 },
                 diagnostic = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 diagnostic_visible = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 diagnostic_selected = {
-                    fg = 'none',
                     bg = 'none',
                     bold = true,
                     italic = false,
                 },
                 indicator_visible = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 indicator_selected = {
-                    fg = 'none',
-                    sp = '#ebdbb2',
                     bg = 'none',
                 },
                 warning = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 warning_visible = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 warning_selected = {
-                    fg = 'none',
                     bg = 'none',
                     bold = true,
                     italic = false,
@@ -161,62 +135,52 @@ return{
                     bg = 'none',
                 },
                 warning_diagnostic_visible = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 warning_diagnostic_selected = {
-                    fg = 'none',
                     bg = 'none',
                     bold = true,
                     italic = false,
                 },
                 error = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 error_visible = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 error_selected = {
-                    fg = 'none',
                     bg = 'none',
                     bold = true,
                     italic = false,
                 },
                 error_diagnostic = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 error_diagnostic_visible = {
-                    fg = 'none',
                     bg = 'none',
                 },
                 error_diagnostic_selected = {
-                    fg = 'none',
                     bg = 'none',
                     bold = true,
                     italic = true,
                 },
                 modified = {
-                    fg = '#ebdbb2',
+                    fg = '#8ec07c',
                     bg = 'none',
                 },
                 modified_visible = {
-                    fg = '#ebdbb2',
+                    fg = '#8ec07c',
                     bg = 'none',
                 },
                 modified_selected = {
-                    fg = '#ebdbb2',
+                    fg = '#8ec07c',
                     bg = 'none',
                 },
                 trunc_marker = {
-                    fg = 'none',
                     bg = 'none',
                 }
             } 
         })
     end
-   
 
 }

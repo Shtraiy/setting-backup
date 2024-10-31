@@ -35,4 +35,5 @@ keymap.set("n", "<A-b-b>", ":bdelete!<CR>")
 -- nvim-tree
 keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>")
 
+-- noice
 
