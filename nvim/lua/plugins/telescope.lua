@@ -10,6 +10,21 @@ return {
         vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
         vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
         vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = 'Telescope recent files' })
-        require("telescope").setup{}
+        require("telescope").setup{
+            defaults = {
+                -- 设置窗口的高度和宽度
+                layout_config = {
+                    horizontal = {
+                        mirror = false,     -- 不反转水平布局
+                        preview_width = 0.6,  -- 预览窗口的宽度，取值范围 0.0 到 1.0
+                    },
+                    vertical = {
+                        mirror = false,     -- 不反转垂直布局
+                    },
+                    width = 0.5,          -- 窗口的宽度，取值范围 0.0 到 1.0
+                    height = 0.5,         -- 窗口的高度，取值范围 0.0 到 1.0
+                },
+            },
+        }
     end
 }

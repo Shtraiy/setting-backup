@@ -1,6 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
- 	dependencies = {
+    dependencies = {
         "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-buffer",
@@ -12,7 +12,9 @@ return {
         "onsails/lspkind.nvim",
         "ray-x/cmp-treesitter",
         "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip"
+        "saadparwaiz1/cmp_luasnip",
+        "zbirenbaum/copilot-cmp",
+        "zbirenbaum/copilot.lua"
     },
     config = function()
         -- icon
@@ -64,14 +66,14 @@ return {
             local col = vim.fn.col "." - 1
             return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
         end
-
+        
         cmp.setup({
             snippet = {
                 expand = function(args)
                     require('luasnip').lsp_expand(args.body)
                 end,
             },
-           mapping = cmp.mapping.preset.insert({
+            mapping = cmp.mapping.preset.insert({
                 ['<C-b>'] = cmp.mapping.scroll_docs(-4),
                 ['<C-f>'] = cmp.mapping.scroll_docs(4),
                 ['<C-e>'] = cmp.mapping.abort(),  -- 取消补全，esc也可以退出
@@ -106,6 +108,24 @@ return {
                 "s",
                 }),
             }),
+            sorting = {
+                priority_weight = 2,
+                comparators = {
+                    require("copilot_cmp.comparators").prioritize,
+
+                    -- Below is the default comparitor list and order for nvim-cmp
+                    cmp.config.compare.offset,
+                    -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+                    cmp.config.compare.exact,
+                    cmp.config.compare.score,
+                    cmp.config.compare.recently_used,
+                    cmp.config.compare.locality,
+                    cmp.config.compare.kind,
+                    cmp.config.compare.sort_text,
+                    cmp.config.compare.length,
+                    cmp.config.compare.order,
+                },
+            },
             window = {
                 documentation = cmp.config.window.bordered(),
                 completion = cmp.config.window.bordered(),
@@ -117,37 +137,39 @@ return {
                         menu = 50, -- leading text (labelDetails)
                         abbr = 10, -- actual suggestion item
                     },
+                    vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"}),
                     ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
                     show_labelDetails = true, -- show labelDetails in menu. Disabled by default
                     before = function(entry, vim_item)
                         vim_item.menu = ({
                             nvim_lsp = "[LSP]",
                             nvim_lua = "[NLUA]",
-                            treesitter = "[TREE]",
-                            path = "[PATH]",
-                            buffer = "[BUFFER]",
-                            zsh = "[ZSH]",
-                            luasnip = "[LUASNIP]",
-                            spell = "[SPELL]",
+                            treesitter = "[Tree]",
+                            path = "[Path]",
+                            buffer = "[Buffer]",
+                            zsh = "[zsh]",
+                            luasnip = "[LuaSnip]",
+                            copilot = "[Copilot]",
+                            spell = "[spell]",
                         })[entry.source.name]
                         return vim_item
                     end,
                     }),
                 },
                 sources = cmp.config.sources({
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
-                    { name = 'path' },
+                    { name = 'copilot', },
+                    { name = 'nvim_lsp', },
+                    { name = 'path', },
+                    { name = 'luasnip', },
                 }, {
                     { name = 'buffer' },
-                })
-            })
+                })            })
         cmp.setup.cmdline(":", {
             mapping = cmp.mapping.preset.cmdline(),
             sources = cmp.config.sources({
                 { name = "path" },
             }, {
-                { name = "cmdline" },
+                 { name = "cmdline" },
             }),
         })
 
@@ -180,17 +202,12 @@ return {
             },
         })
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            require('lspconfig')['clangd'].setup {
-                capabilities = capabilities
-            }
-            require('lspconfig')['pyright'].setup {
-                capabilities = capabilities
-            }
-            require('lspconfig')['lua_ls'].setup {
-                capabilities = capabilities
-            }
-            require('lspconfig')['harper_ls'].setup {
-                capabilities = capabilities
-            }
+            local lspconfig = require('lspconfig')
+            local servers = { 'clangd', 'pyright', 'lua_ls', 'rust-analyzer'}  -- 添加你需要的 LSP
+            for _, server in ipairs(servers) do
+                lspconfig[server].setup {
+                    capabilities = capabilities
+                }
+            end
         end
 }

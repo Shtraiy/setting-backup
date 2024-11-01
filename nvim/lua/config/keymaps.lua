@@ -26,8 +26,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 -- 切换buffer
 keymap.set("n", "<A-l>", ":bnext<CR>")
 keymap.set("n", "<A-h>", ":bprevious<CR>")
-keymap.set("n", "<A-b>", ":bdelete<CR>")   
-keymap.set("n", "<A-b-b>", ":bdelete!<CR>")   
+keymap.set("n", "<A-b>", ":bdelete!<CR>")   
 
     
     
