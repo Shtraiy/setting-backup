@@ -116,6 +116,34 @@ return{
                     bold = true,
                     italic = false,
                 },
+                hint = {
+                    fg = '#928374',
+                    bg = 'none',
+                },
+                hint_visible = {
+                    fg = '#928374',
+                    bg = 'none',
+                },
+                hint_selected = {
+                    fg = '#ebdbb2',
+                    bg = 'none',
+                    bold = true,
+                    italic = false,
+                },
+                hint_diagnostic = {
+                    fg = '#b8bb26',
+                    bg = 'none',
+                },
+                hint_diagnostic_visible = {
+                    fg = '#b8bb26',
+                    bg = 'none',
+                },
+                hint_diagnostic_selected = {
+                    fg = '#b8bb26',
+                    bg = 'none',
+                    bold = true,
+                    italic = false,
+                },
                 info = {
                     fg = '#928374',
                     bg = 'none',
