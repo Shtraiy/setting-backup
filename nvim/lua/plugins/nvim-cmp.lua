@@ -17,7 +17,7 @@ return {
         "zbirenbaum/copilot.lua"
     },
     config = function()
-        -- icon
+        -- kind_icons
         local kind_icons = {
             Class = "∴",
             Color = "🖌",
@@ -66,7 +66,8 @@ return {
             local col = vim.fn.col "." - 1
             return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
         end
-        
+        -- 设置 pumheight 的值
+        vim.o.pumheight = 10,  -- 设置弹出菜单的最大高度为 5
         cmp.setup({
             snippet = {
                 expand = function(args)
@@ -127,8 +128,8 @@ return {
                 },
             },
             window = {
-                documentation = cmp.config.window.bordered(),
                 completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
             },
             formatting = {
                 format = lspkind.cmp_format({
