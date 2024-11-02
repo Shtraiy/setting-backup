@@ -4,15 +4,8 @@ return{
         local Terminal = require('toggleterm.terminal').Terminal
         require("toggleterm").setup{
             open_mapping = [[<A-\>]],
-            direction = 'horizontal',
-            size = function(term)
-                if term.direction == "horizontal" then
-                    return 15
-                elseif term.direction == "vertical" then
-                    return vim.o.columns * 0.4
-                end
-            end,
-            vim.api.nvim_set_keymap("t", "<Esc>", "<A-\\><A-n>", {noremap = true, silent = true}),
+            direction = 'float',
+            vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true}),
             vim.api.nvim_set_keymap("t", "<A-l>", "<Cmd> wincmd l<CR>", {noremap = true, silent = true}),
             vim.api.nvim_set_keymap("t", "<A-F>", "<Cmd> wincmd h<CR>", {noremap = true, silent = true}),
             vim.api.nvim_set_keymap("t", "<A-j>", "<Cmd> wincmd j<CR>", {noremap = true, silent = true}),
@@ -33,23 +26,15 @@ return{
             },
             float_opts = {
                 border = 'curved',
-                width = 80,
-                height = 20,
+                height = math.floor(vim.o.lines * 0.7), -- 设置高度为 70% 的屏幕高度
+                width = math.floor(vim.o.columns / 2),   -- 设置宽度为一半的屏幕宽度
                 close_on_esc = true,
                 shading_factor = 0.9,
                 relative = 'editor',
-                row = 20,
-                col = 50,
             },
             -- 打开新终端后自动进入插入模式
             start_in_insert = true,
         }
-
-        -- -- 文件浏览器配置
-        -- local term_float = Terminal:new({ cmd = '', hidden = true, direction = 'float' })
-        -- -- 打开文件浏览器
-        -- vim.keymap.set('n', '<A-F>', function() file_explorer_term:toggle() end)
-
     end
 }
 

@@ -9,6 +9,7 @@ keymap.set("i", "jk", "<ESC>")
 -- 单行或多行移动
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap.set("v", "-", "$") -- 跳转到行尾
 
 -- ---------- 正常模式 ---------- ---
 -- 窗口
