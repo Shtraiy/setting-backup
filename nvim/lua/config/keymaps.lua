@@ -29,11 +29,15 @@ keymap.set("n", "<A-l>", ":bnext<CR>")
 keymap.set("n", "<A-h>", ":bprevious<CR>")
 keymap.set("n", "<A-b>", ":bdelete!<CR>")   
 
-    
-    
+-- ---------- 替换模式 ---------- ---
+keymap.set('n', 'R', '<Nop>', { noremap = true, silent = true })
+keymap.set('n', 'r', '<Nop>', { noremap = true, silent = true })
+
+
 -- ---------- 插件 ---------- ---
 -- nvim-tree
 keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>")
 
 -- noice
+
 
