@@ -72,11 +72,10 @@ return {
                 end,
             },
             mapping = cmp.mapping.preset.insert({
-                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-k>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-j>'] = cmp.mapping.scroll_docs(4),
                 ['<C-e>'] = cmp.mapping.abort(),  -- 取消补全，esc也可以退出
                 ['<CR>'] = cmp.mapping.confirm({ select = true }),
-
                 ["<Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()

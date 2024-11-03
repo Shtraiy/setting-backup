@@ -31,8 +31,6 @@ keymap.set("n", "<A-b>", ":bdelete!<CR>")
 
 -- ---------- 替换模式 ---------- ---
 keymap.set('n', 'R', '<Nop>', { noremap = true, silent = true })
-keymap.set('n', 'r', '<Nop>', { noremap = true, silent = true })
-
 
 -- ---------- 插件 ---------- ---
 -- nvim-tree

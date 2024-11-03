@@ -1,5 +1,6 @@
 return{
     "lukas-reineke/indent-blankline.nvim",
+    dependencies = {"HiPhish/rainbow-delimiters.nvim"},
     main = "ibl",
     opts = {},
 
@@ -13,7 +14,6 @@ return{
             "RainbowViolet",
             "RainbowCyan",
         }
-
         local hooks = require "ibl.hooks"
         -- create the highlight groups in the highlight setup hook, so they are reset
         -- every time the colorscheme changes
@@ -23,12 +23,24 @@ return{
             vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
             vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
             vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+            vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" }) 
             vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
         end)
-
-        require("ibl").setup { indent = { highlight = highlight } }
-        
+        vim.g.rainbow_delimiters = { highlight = highlight }
+        require("ibl").setup { 
+            indent = {
+                char = "┊",
+                highlight = highlight 
+            },
+            scope = {
+                char = "▎",
+                include = {
+                    node_type = { ["*"] = { "*" } },
+                },
+                highlight = vim.api.nvim_set_hl(0, "IblScope", { fg = "#f9f5d7" })
+            }
+        }
+        hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
     end
 
 
