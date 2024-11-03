@@ -34,9 +34,8 @@ return{
             },
             scope = {
                 char = "▎",
-                include = {
-                    node_type = { ["*"] = { "*" } },
-                },
+                show_start = false,
+                show_end = false,
                 highlight = vim.api.nvim_set_hl(0, "IblScope", { fg = "#f9f5d7" })
             }
         }
