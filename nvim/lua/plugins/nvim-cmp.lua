@@ -134,10 +134,10 @@ return {
                 }),
             },
             sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'path' },
-                { name = 'luasnip' },
-                { name = 'treesitter' },
+                { name = 'nvim_lsp', priority = 999 },
+                { name = 'path', priority = 99 },
+                { name = 'luasnip', priority = 1000 },
+                { name = 'treesitter', priority = 100 },
             }, {
                 { name = 'buffer' },
             })
@@ -175,13 +175,43 @@ return {
                 prefix = "",
             },
         })
+
+            -- LSP配置
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require('lspconfig')
-            local servers = { 'clangd', 'pyright', 'lua_ls', 'rust_analyzer'}  -- 添加你需要的 LSP
+            local servers = { 'pyright', 'lua_ls', 'rust_analyzer', 'ast_grep'}  -- 添加你需要的 LSP
             for _, server in ipairs(servers) do
                 lspconfig[server].setup {
                     capabilities = capabilities
                 }
             end
+            
+            -- harper-ls设置
+            lspconfig['harper_ls'].setup{
+                capabilities = capabilities,
+                settings = {
+                    ["harper-ls"] = {
+                        userDictPath = "~/dict.txt",
+                        fileDictPath = "~/.harper/", linters = {
+                            spell_check = false,
+                            spelled_numbers = false,
+                            an_a = true,
+                            sentence_capitalization = false,
+                            unclosed_quotes = true,
+                            wrong_quotes = false,
+                            long_sentences = false,
+                            repeated_words = true,
+                            spaces = true,
+                            matcher = true,
+                            correct_number_suffix = true,
+                            number_suffix_capitalization = true,
+                            multiple_sequential_pronouns = true,
+                            linking_verbs = false,
+                            avoid_curses = true,
+                            terminating_conjunctions = true
+                        }
+                    }
+                },
+            }
         end
 }

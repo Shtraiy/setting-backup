@@ -4,7 +4,8 @@ return{
         local Terminal = require('toggleterm.terminal').Terminal
         require("toggleterm").setup{
             open_mapping = [[<A-\>]],
-            direction = 'float',
+            size = 15,
+            direction = 'horizontal',
             vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", {noremap = true, silent = true}),
             vim.api.nvim_set_keymap("t", "<A-l>", "<Cmd> wincmd l<CR>", {noremap = true, silent = true}),
             vim.api.nvim_set_keymap("t", "<A-F>", "<Cmd> wincmd h<CR>", {noremap = true, silent = true}),
