@@ -45,7 +45,7 @@ return{
                 show_close_icon = true,
                 show_tab_indicators = false,
                 show_duplicate_prefix = false,
-                separator_style = { '|', '|' },
+                separator_style = { '│', '│' },
                 enforce_regular_tabs = true,
                 pick = {
                     alphabet = "abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ1234567890",

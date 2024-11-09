@@ -7,6 +7,9 @@ vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 vim.cmd([[highlight IncSearch guifg=#f9f5d7 ]])
 vim.cmd([[highlight Search guifg=#f9f5d7 ]])
 
-vim.cmd([[highlight IlluminatedWordText gui=underline ]])
-vim.cmd([[highlight IlluminatedWordRead gui=underline ]])
+
+-- Illuminate配置
 vim.cmd([[highlight IlluminatedWordWrite gui=underline ]])
+vim.cmd([[highlight IlluminatedWordText gui=none ]])
+vim.cmd([[highlight IlluminatedWordRead gui=underline ]])
+vim.cmd([[highlight Function guifg=#30db97 ]])
