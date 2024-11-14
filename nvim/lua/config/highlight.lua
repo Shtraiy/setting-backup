@@ -15,3 +15,7 @@ vim.cmd([[highlight IlluminatedWordWrite gui=underline ]])
 vim.cmd([[highlight IlluminatedWordText gui=none ]])
 vim.cmd([[highlight IlluminatedWordRead gui=underline ]])
 vim.cmd([[highlight Function guifg=#30db97 ]])
+
+-- Treesitter配置
+-- asm配置 
+vim.cmd([[highlight link @variable.builtin Function]])
