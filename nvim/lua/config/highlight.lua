@@ -18,4 +18,4 @@ vim.cmd([[highlight Function guifg=#30db97 ]])
 
 -- Treesitter配置
 -- asm配置 
-vim.cmd([[highlight link @variable.builtin Function]])
+vim.cmd([[highlight link @variable.builtin GruvboxAqua]])
