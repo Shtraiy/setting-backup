@@ -37,6 +37,12 @@ return{
                 show_start = false,
                 show_end = false,
                 highlight = highlight,
+                include = {
+                    -- 指定希望缩进高亮的范围类型
+                    node_type = {
+                        ["*"] = { "*" }
+                    },
+                }
             }
         }
         hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
