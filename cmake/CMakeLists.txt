@@ -9,6 +9,6 @@ project(Project-1)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # 添加 src 目录中的所有 cpp 文件到项目中
-file(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/src/*.cpp")
+file(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/src/*")
 # 添加可执行文件并链接源文件
 add_executable(main ${SOURCES})
