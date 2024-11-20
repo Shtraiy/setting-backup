@@ -23,8 +23,8 @@ keymap.set('v', '<', '<gv', { noremap = true, silent = true })
 keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口 
 keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
 keymap.set("n", "-", "$") -- 跳转到行尾
-keymap.set("n", "J", "j")
-keymap.set("n", "K", "k")
+keymap.set("n", "J", "5j", { noremap = true, silent = true })
+keymap.set("n", "K", "5k", { noremap = true, silent = true })
 
 -- Lsp Definition
 keymap.set("n", "<leader>d", '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })

@@ -11,11 +11,11 @@ vim.cmd([[highlight Search guifg=#f9f5d7 ]])
 
 
 -- Illuminate配置
-vim.cmd([[highlight IlluminatedWordWrite gui=underline ]])
+vim.cmd([[highlight IlluminatedWordWrite gui=none guibg=#504945 ]])
 vim.cmd([[highlight IlluminatedWordText gui=none ]])
-vim.cmd([[highlight IlluminatedWordRead gui=underline ]])
-vim.cmd([[highlight Function guifg=#30db97 ]])
+vim.cmd([[highlight IlluminatedWordRead gui=none guibg=#504945 ]])
 
 -- Treesitter配置
 -- asm配置 
+vim.cmd([[highlight Function guifg=#30db97 ]])
 vim.cmd([[highlight link @variable.builtin GruvboxAqua]])
