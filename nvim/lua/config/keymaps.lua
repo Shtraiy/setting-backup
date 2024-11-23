@@ -24,14 +24,13 @@ keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口
 keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
 keymap.set("n", "-", "$") -- 跳转到行尾
 keymap.set("n", "J", "5j", { noremap = true, silent = true })
+keymap.set("n", "L", "5l", { noremap = true, silent = true })
 keymap.set("n", "K", "5k", { noremap = true, silent = true })
+keymap.set("n", "H", "5h", { noremap = true, silent = true })
+keymap.set("n", "<C-v>", "<Nop>", { noremap = true, silent = true })
 
 -- Lsp Definition
 keymap.set("n", "<leader>d", '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-
--- ---------- 终端模式 ---------- ---
-
-keymap.set("t", "<Esc>", "<A-\\><A-n>", {noremap = true, silent = true})
 
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>", { noremap = true, silent = true })
@@ -46,7 +45,7 @@ keymap.set('n', 'R', '<Nop>', { noremap = true, silent = true })
 
 -- ---------- 插件 ---------- ---
 -- nvim-tree
-keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 -- noice
 
