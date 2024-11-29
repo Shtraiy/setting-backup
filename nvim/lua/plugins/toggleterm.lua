@@ -31,7 +31,7 @@ return{
             -- 打开新终端后自动进入插入模式
             start_in_insert = true,
             -- 快捷键设置
-            vim.api.nvim_set_keymap("t", "<C-c>", "<C-\\><C-n>", {noremap = true, silent = true}),
+            vim.api.nvim_set_keymap("t", "<ESC>", "<C-\\><C-n>", {noremap = true, silent = true}),
             vim.api.nvim_set_keymap("t", "<A-l>", "<Cmd> wincmd l<CR>", {noremap = true, silent = true}),
             vim.api.nvim_set_keymap("t", "<A-F>", "<Cmd> wincmd h<CR>", {noremap = true, silent = true}),
             vim.api.nvim_set_keymap("t", "<A-j>", "<Cmd> wincmd j<CR>", {noremap = true, silent = true}),
@@ -82,7 +82,7 @@ return{
             })
             term2:toggle()
         end
-        vim.api.nvim_set_keymap('n', '<Leader>v', ':lua vertical_term()<CR>', { noremap = true, silent = true })
+        vim.api.nvim_set_keymap('n', '<Leader>vv', ':lua vertical_term()<CR>', { noremap = true, silent = true })
 
 
 
