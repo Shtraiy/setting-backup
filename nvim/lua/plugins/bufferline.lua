@@ -6,7 +6,6 @@ return{
             return " " .. icon .. count
         end,
         require('bufferline').setup({
-            
             options = {
                 mode = "buffers", -- set to "tabs" to only show tabpages instead
                 close_command = "bdelete! %d",       -- can be a string | function, | false see "Mouse actions"
