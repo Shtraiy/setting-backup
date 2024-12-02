@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+
 --行号
 opt.relativenumber = false
 opt.number = true
@@ -21,7 +22,7 @@ opt.cursorline = true
 opt.mouse:append("a")
 
 --系统剪切板
-opt.clipboard:append("unnamedplus")
+opt.clipboard:append("unnamed")
 
 
 --默认新窗口右和下
@@ -35,6 +36,7 @@ opt.smartcase = true
 --外观
 opt.termguicolors = true
 opt.signcolumn = "yes"
+opt.laststatus = 3
 
 --
 

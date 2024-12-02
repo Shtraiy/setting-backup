@@ -179,7 +179,7 @@ return {
             -- LSP配置
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require('lspconfig')
-            local servers = { 'pyright', 'lua_ls', 'rust_analyzer', 'clangd'}  -- 添加你需要的 LSP
+            local servers = { 'pyright', 'lua_ls', 'rust_analyzer', 'clangd', 'cmake'}  -- 添加你需要的 LSP
             for _, server in ipairs(servers) do
                 lspconfig[server].setup {
                     capabilities = capabilities
