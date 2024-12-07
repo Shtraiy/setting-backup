@@ -22,11 +22,12 @@ keymap.set('v', '<', '<gv', { noremap = true, silent = true })
 -- 窗口
 keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口 
 keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
-keymap.set("n", "-", "$") -- 跳转到行尾
 keymap.set("n", "J", "5j", { noremap = true, silent = true })
 keymap.set("n", "K", "5k", { noremap = true, silent = true })
 keymap.set("n", "<C-v>", "<Nop>", { noremap = true, silent = true })
 keymap.set('n', '<leader>h', ':nohlsearch<CR>', { noremap = true, silent = true })
+keymap.set('n', '<leader>s', ':lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
+keymap.set('n', '=', '<nop>', { noremap = true, silent = true })
 
 -- 将 `n` 绑定为跳转到上一个匹配项
 keymap.set('n', 'n', 'N', { noremap = true, silent = true })

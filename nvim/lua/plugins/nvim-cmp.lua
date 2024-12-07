@@ -107,7 +107,9 @@ return {
             }),
             window = {
                 completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+                documentation = {
+                    border = 'rounded', -- 文档窗口的边框样式
+                },
             },
             formatting = {
                 format = lspkind.cmp_format({
