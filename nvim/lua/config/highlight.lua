@@ -19,3 +19,6 @@ vim.cmd([[highlight IlluminatedWordRead gui=none guibg=#504945 ]])
 -- asm配置 
 vim.cmd([[highlight Function guifg=#30db97 ]])
 vim.cmd([[highlight link @variable.builtin GruvboxAqua]])
+
+-- Noice配置
+vim.cmd([[highlight NoiceCmdlinePopupBorder guifg=#ebdbb2 ]])
