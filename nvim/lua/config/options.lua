@@ -1,6 +1,8 @@
 local opt = vim.opt
 
-vim.opt.guifont = "JetBrainsMonoNL Nerd Font Propo:h12"
+-- 编码方式 utf8
+vim.g.encoding = "UTF-8"
+vim.o.fileencoding = "utf-8"
 
 --行号
 opt.relativenumber = false
@@ -18,7 +20,8 @@ opt.wrap = false
 
 --光标行
 opt.cursorline = true
-vim.o.scrolloff = 999
+opt.scrolloff = 8
+opt.sidescrolloff = 8
 
 --启动鼠标
 opt.mouse:append("a")
@@ -34,11 +37,19 @@ opt.splitbelow = true
 opt.ignorecase = true
 opt.smartcase = true
 
+-- 自动加载外部修改
+vim.o.autoread = true
+vim.bo.autoread = true
+
 --外观
 opt.termguicolors = true
 opt.signcolumn = "yes"
 opt.laststatus = 3
+opt.cmdheight = 2
 
+--禁止创建备份文件
+opt.backup = false
+opt.writebackup = false
 --
 
 
