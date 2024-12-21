@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+vim.opt.guifont = "JetBrainsMonoNL Nerd Font Propo:h12"
 
 --行号
 opt.relativenumber = false
@@ -17,13 +18,13 @@ opt.wrap = false
 
 --光标行
 opt.cursorline = true
+vim.o.scrolloff = 999
 
 --启动鼠标
 opt.mouse:append("a")
 
 --系统剪切板
-opt.clipboard:append("unnamed")
-
+opt.clipboard:append("unnamedplus")
 
 --默认新窗口右和下
 opt.splitright = true
