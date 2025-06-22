@@ -22,3 +22,9 @@ vim.cmd([[highlight link @variable.builtin GruvboxAqua]])
 
 -- Noice配置
 vim.cmd([[highlight NoiceCmdlinePopupBorder guifg=#ebdbb2 ]])
+
+
+-- 针对 Fidget 标题的高亮，设置背景透明（假设你的终端/Neovim 支持透明背景）
+vim.api.nvim_set_hl(0, "FidgetTitle", { bg = "none" })  
+-- 针对 Fidget 任务内容的高亮，设置背景透明
+vim.api.nvim_set_hl(0, "FidgetTask", { bg = "none" })

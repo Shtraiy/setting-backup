@@ -1,49 +1,31 @@
 return{
     'numToStr/Comment.nvim',
     opts = {
-        ---Add a space b/w comment and the line
         padding = true,
-        ---Whether the cursor should stay at its position
         sticky = true,
-        ---Lines to be ignored while (un)comment
         ignore = nil,
-        ---LHS of toggle mappings in NORMAL mode
         toggler = {
-            ---Line-comment toggle keymap
-            line = 'gcc',
-            ---Block-comment toggle keymap
-            block = 'gbc',
+            line = '<leader>gcc',  -- 行注释切换
+            block = '<leader>gbc', -- 塊注释切换
         },
-        ---LHS of operator-pending mappings in NORMAL and VISUAL mode
         opleader = {
-            ---Line-comment keymap
-            line = 'gc',
-            ---Block-comment keymap
-            block = 'gb',
+            line = '<leader>gc',   -- 行注释操作符
+            block = '<leader>gb',  -- 塊注释操作符
         },
-        ---LHS of extra mappings
         extra = {
-            ---Add comment on the line above
-            above = 'gcO',
-            ---Add comment on the line below
-            below = 'gco',
-            ---Add comment at the end of line
-            eol = 'gcA',
+            above = '<leader>gcO', -- 上方添加注释
+            below = '<leader>gco', -- 下方添加注释
+            eol = '<leader>gcA',   -- 行尾添加注释
         },
-        ---Enable keybindings
-        ---NOTE: If given `false` then the plugin won't create any mappings
         mappings = {
-            ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
             basic = true,
-            ---Extra mapping; `gco`, `gcO`, `gcA`
             extra = true,
         },
-        ---Function to call before (un)comment
         pre_hook = nil,
-        ---Function to call after (un)comment
         post_hook = nil,
     },
     config = function ()
         require('Comment').setup()
     end
 }
+
