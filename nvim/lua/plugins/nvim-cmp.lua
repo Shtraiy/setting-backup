@@ -11,7 +11,8 @@ return {
         "ray-x/cmp-treesitter",
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
-        "saadparwaiz1/cmp_luasnip"
+        "saadparwaiz1/cmp_luasnip",
+        "olimorris/codecompanion.nvim",
     },
     config = function()
         -- kind_icons
@@ -130,6 +131,7 @@ return {
                             zsh = "[zsh]",
                             luasnip = "[LuaSnip]",
                             spell = "[spell]",
+                            codecompanion = "[AI]"
                         })[entry.source.name]
                         return vim_item
                     end,
@@ -140,6 +142,7 @@ return {
                 { name = 'path', priority = 99 },
                 { name = 'luasnip', priority = 1000 },
                 { name = 'treesitter', priority = 100 },
+                { name = 'codecompanion', priority = 1000},
             }, {
                 { name = 'buffer' },
             })
