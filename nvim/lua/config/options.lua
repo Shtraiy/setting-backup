@@ -1,8 +1,9 @@
 local opt = vim.opt
 
--- 编码方式 utf8
-vim.g.encoding = "UTF-8"
-vim.o.fileencoding = "utf-8"
+-- 编码设置（新增/修改部分）
+opt.encoding = "utf-8"          -- Vim内部处理使用的编码
+opt.fileencoding = "utf-8"      -- 文件保存时的默认编码
+opt.fileencodings = "utf-8,ucs-bom,gbk,gb2312,cp936,latin1"  -- 读取文件时尝试的编码列表
 
 --行号
 opt.relativenumber = false
@@ -27,7 +28,7 @@ opt.sidescrolloff = 8
 opt.mouse:append("a")
 
 --系统剪切板
-opt.clipboard:append("unnamedplus")
+opt.clipboard = "unnamedplus"
 
 --默认新窗口右和下
 opt.splitright = true

@@ -3,7 +3,8 @@ return {
     config = function()
         local alpha = require("alpha")
         local dashboard = require("alpha.themes.dashboard")
-        local header = require("custom.alpha-header")
+        local header = require("custom.alpha-mortis")
+        -- local header = require("custom.alpha-mako")
 
         dashboard.section.header.val = header.val
         dashboard.section.header.opts = header.opts

@@ -155,24 +155,21 @@ return {
                  { name = "cmdline" },
             }),
         })
-        local sign = function(opts)
-            vim.fn.sign_define(opts.name, {
-                texthl = opts.name,
-                text = opts.text,
-                numhl = "",
-            })
-        end
-        sign({ name = "DiagnosticSignError", text = "✘" })
-        sign({ name = "DiagnosticSignWarn", text = "▲" })
-        sign({ name = "DiagnosticSignHint", text = "⚑" })
-        sign({ name = "DiagnosticSignInfo", text = "" })
         vim.diagnostic.config({
             virtual_text = true,
-            --virtual_text = false,
             severity_sort = true,
-            signs = true,
             update_in_insert = false,
             underline = false,
+
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "✘",
+                    [vim.diagnostic.severity.WARN]  = "▲",
+                    [vim.diagnostic.severity.HINT]  = "⚑",
+                    [vim.diagnostic.severity.INFO]  = "",
+                },
+            },
+
             float = {
                 border = "rounded",
                 source = "always",
@@ -180,15 +177,16 @@ return {
                 prefix = "",
             },
         })
-
             -- LSP配置
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
-            local lspconfig = require('lspconfig')
-            local servers = { 'pyright', 'lua_ls', 'rust_analyzer', 'clangd', 'cmake'}  -- 添加你需要的 LSP
+
+            local servers = { 'pyright', 'lua_ls', 'rust_analyzer', 'clangd', 'cmake' }
+
             for _, server in ipairs(servers) do
-                lspconfig[server].setup {
-                    capabilities = capabilities
+                vim.lsp.config[server] = {
+                    capabilities = capabilities,
                 }
+                vim.lsp.enable(server)
             end
         end
 }
