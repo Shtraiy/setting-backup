@@ -1,6 +1,7 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
 
 -- ---------- 插入模式 ---------- ---
 
@@ -52,21 +53,16 @@ keymap.set('n', 'R', '<Nop>', { noremap = true, silent = true })
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
--- noice
---
 
+-- Avante
+-- 打开 Chat 窗口
+vim.api.nvim_set_keymap("n", "<leader>ac", ":AvanteChat<CR>", opts)
 
+-- 对选中代码进行补全
+vim.api.nvim_set_keymap("v", "<leader>aa", ":AvanteComplete<CR>", opts)
 
+-- 对选中代码进行编辑/重构
+vim.api.nvim_set_keymap("v", "<leader>ae", ":AvanteEdit<CR>", opts)
 
--- CodeCompanion
-keymap.set({ "n", "v" }, "<leader>cp", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-keymap.set("v", "<leader>ca", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-keymap.set({ "n", "v" }, "<leader>ci", "<cmd>CodeCompanion<cr>", { noremap = true, silent = true })
-
-
-
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
-
-
+-- 切换侧边栏
+vim.api.nvim_set_keymap("n", "<leader>as", ":AvanteToggleSidebar<CR>", opts)
