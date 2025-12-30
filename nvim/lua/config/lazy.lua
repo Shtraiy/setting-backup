@@ -29,6 +29,10 @@ require("lazy").setup({
         import = "plugins"
     },
   },
+  ui = {
+      border = "rounded", -- 可选： "single", "double", "rounded", "solid", "shadow"
+      winblend = 0,       -- 0 完全不透明， >0 半透明
+  },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },

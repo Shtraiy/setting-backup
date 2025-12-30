@@ -20,10 +20,10 @@ keymap.set('v', '<', '<gv', { noremap = true, silent = true })
 
 -- ---------- 正常模式 ---------- ---
 -- 窗口
+keymap.set("n", "K", "5k", { noremap = true, silent = true })
+keymap.set("n", "J", "5j", { noremap = true, silent = true })
 keymap.set("n", "<leader>sv", "<C-w>v") -- 水平新增窗口 
 keymap.set("n", "<leader>sh", "<C-w>s") -- 垂直新增窗口
-keymap.set("n", "J", "5j", { noremap = true, silent = true })
-keymap.set("n", "K", "5k", { noremap = true, silent = true })
 keymap.set("n", "<C-v>", "<Nop>", { noremap = true, silent = true })
 keymap.set('n', '<leader>h', ':nohlsearch<CR>', { noremap = true, silent = true })
 keymap.set('n', '<leader>s', ':lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
@@ -39,7 +39,7 @@ keymap.set('n', 'N', 'n', { noremap = true, silent = true })
 keymap.set("n", "<leader>d", '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
 
 -- 取消高亮
-keymap.set("n", "<leader>nh", ":nohl<CR>", { noremap = true, silent = true })
+keymap.set("n", "<leader>ch", ":nohl<CR>", { noremap = true, silent = true })
 
 -- 切换buffer
 keymap.set("n", "<A-l>", ":bnext<CR>", { noremap = true, silent = true })
@@ -55,14 +55,37 @@ keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = t
 
 
 -- Avante
--- 打开 Chat 窗口
-vim.api.nvim_set_keymap("n", "<leader>ac", ":AvanteChat<CR>", opts)
-
 -- 对选中代码进行补全
-vim.api.nvim_set_keymap("v", "<leader>aa", ":AvanteComplete<CR>", opts)
+keymap.set("v", "<leader>aa", ":AvanteComplete<CR>", opts)
+
+keymap.set("n", "<leader>cl", function() avante.clear() end, { noremap = true, silent = true })
 
 -- 对选中代码进行编辑/重构
-vim.api.nvim_set_keymap("v", "<leader>ae", ":AvanteEdit<CR>", opts)
+keymap.set("v", "<leader>ae", ":AvanteEdit<CR>", opts)
 
 -- 切换侧边栏
-vim.api.nvim_set_keymap("n", "<leader>as", ":AvanteToggleSidebar<CR>", opts)
+keymap.set("n", "<leader>as", ":AvanteToggleSidebar<CR>", opts)
+
+-- Lspsaga
+-- Hover 文档
+keymap.set("n", "H", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+
+-- 重命名
+keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { silent = true })
+
+-- Code Action
+keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+
+-- 查看定义（不跳转，预览）
+keymap.set("n", "<leader>g", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+
+-- 查看引用
+keymap.set("n", "<leader>gr", "<cmd>Lspsaga finder<CR>", { silent = true })
+
+-- 诊断信息
+keymap.set("n", "<leader>ge", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+
+-- 上下诊断跳转
+keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+

@@ -19,6 +19,12 @@ return{
         })
         require("noice").setup({
             background_colour = "#000000",
+            routes = {
+                {
+                    filter = { event = "msg_show", kind = "image" },
+                    opts = { skip = true },
+                },
+            },
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
                 override = {

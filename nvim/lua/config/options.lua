@@ -5,6 +5,9 @@ opt.encoding = "utf-8"          -- Vim内部处理使用的编码
 opt.fileencoding = "utf-8"      -- 文件保存时的默认编码
 opt.fileencodings = "utf-8,ucs-bom,gbk,gb2312,cp936,latin1"  -- 读取文件时尝试的编码列表
 
+-- 缓冲
+opt.showtabline = 2
+
 --行号
 opt.relativenumber = false
 opt.number = true

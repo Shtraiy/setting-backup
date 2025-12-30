@@ -1,0 +1,27 @@
+-- Lspsaga
+
+<leader>g 查看定义
+
+<leader>gr 查看引用
+
+<leader>rn 重命名
+
+-- Telescope
+<C-r> JKHL 窗口跳转下上左右
+
+<leader>ff 搜索文件
+
+<leader>fg 搜索字符
+
+<leader>fo 搜索旧文件
+
+
+-- Avante
+
+安装Avante时记得 
+cd ~/.local/share/nvim/lazy/avante.nvim
+make
+
+<leader>cc 打开Avante
+
+<leader>ch 清除高亮

@@ -1,23 +1,38 @@
-return{
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {
-        label = {
-            uppercase = false,
-            after = false,
-            before = true,
-            style = "overlay",
-            rainbow = {
-                enabled = true,
-                -- number between 1 and 9
-                shade = 6,
-            },
-        }
-    },
-    keys = {
-        { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-        { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-        { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-        { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-        { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },    },
+return {
+  "folke/flash.nvim",
+  event = "VeryLazy",
+  opts = {
+      -- 不配置 search / treesitter / remote，即不启用这些插件
+      -- 保留 char 模式
+      modes = {
+          char = {
+              enabled = true,
+          },
+      },
+      jump = { autojump = false }, -- 禁止自动跳转提示
+      label = {
+          uppercase = false,
+          after = false,
+          before = true,
+          style = "overlay",
+          rainbow = {
+              enabled = true,
+              -- number between 1 and 9
+              shade = 6,
+          },
+      }
+  },
+  config = function(_, opts)
+      require("flash").setup(opts)
+
+      -- 手动映射 s / S
+      vim.keymap.set({"n", "x", "o"}, "s", function()
+          require("flash").jump()
+      end, { desc = "Flash s jump" })
+
+      vim.keymap.set({"n", "x", "o"}, "S", function()
+          require("flash").treesitter()
+      end, { desc = "Flash S jump" })
+  end
 }
+
