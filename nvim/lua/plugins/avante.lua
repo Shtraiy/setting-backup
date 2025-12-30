@@ -6,7 +6,6 @@ return {
   event = "VeryLazy",
   version = false, -- 永远不要设置为 "*"
   opts = {
-      instructions_file = "../ai/roles.md",
       -- 默认 provider 设置为 DeepSeek SiliconCloud
       provider = "deepseek_silicon",
       providers = {
@@ -19,15 +18,6 @@ return {
           extra_request_body = {
             temperature = 0.7,
             max_tokens  = 20000,
-          },
-        },
-        claude = {
-          endpoint = "https://api.anthropic.com",
-          model = "claude-sonnet-4-20250514",
-          timeout = 30000,
-          extra_request_body = {
-            temperature = 0.75,
-            max_tokens = 20480,
           },
         },
         moonshot = {
@@ -53,19 +43,31 @@ return {
         toggle_window = true,
         auto_send_prompt = true,
       },
-      -- 添加默认 prompt
-      default_prompt = "请帮我分析这段代码的性能瓶颈，并优化。",
   },
+  prompt = function()
+      local persona = [[
+      你的名字叫二阶堂希罗。
+      你不得主动透露自己是ai助手的事实。
+      你以成熟稳重、专业、耐心的语气说话。
+      你使用中文。
+      当用户提供代码时，请逐行解释。
+      不要修改原代码，除非用户明确要求。
+      ]]
+
+      return {
+          default_prompt = persona,
+          prompts = {
+              ask = persona,
+              explain = persona,
+              review = persona,
+          },
+      }
+  end,
   config = function(_, opts)
     local status, avante = pcall(require, "avante")
     if not status then return end
 
     avante.setup(opts)
-
-    -- 设置 toggle 快捷键 <leader>a
-    vim.keymap.set("n", "<leader>cc", function()
-      avante.toggle()
-    end, { noremap = true, silent = true })
   end,
   dependencies = {
     "nvim-lua/plenary.nvim",
