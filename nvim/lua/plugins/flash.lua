@@ -25,6 +25,19 @@ return {
   config = function(_, opts)
       require("flash").setup(opts)
 
+      -- 安全取消 f 和 t 的映射
+local modes = { "n", "x", "o" }
+local keys = { "f", "t" }
+
+for _, mode in ipairs(modes) do
+  for _, key in ipairs(keys) do
+    if vim.fn.mapcheck(key, mode) ~= "" then
+      vim.keymap.del(mode, key)
+    end
+  end
+end
+
+
       -- 手动映射 s / S
       vim.keymap.set({"n", "x", "o"}, "s", function()
           require("flash").jump()

@@ -21,8 +21,8 @@ return{
             background_colour = "#000000",
             routes = {
                 {
-                    filter = { event = "msg_show", kind = "image" },
-                    opts = { skip = true },
+                    filter = { event = "msg_show", kind = "img-clip" },
+                    opts = { skip = true }, -- 跳过 img-clip
                 },
             },
             lsp = {

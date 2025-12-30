@@ -52,7 +52,7 @@ return{
             zshterm:toggle()
         end
         -- 绑定快捷键生成zsh窗口
-        vim.api.nvim_set_keymap("n", "<leader>z", "<Cmd>lua zsh_toggle()<CR>", {noremap = true, silent = true})
+        vim.api.nvim_set_keymap("n", "<leader>v", "<Cmd>lua zsh_toggle()<CR>", {noremap = true, silent = true})
 
         -- htop终端窗口配置
         local htopterm = Terminal:new({

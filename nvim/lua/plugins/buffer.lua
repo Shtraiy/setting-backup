@@ -21,7 +21,7 @@ return {
               local name = vim.fn.fnamemodify(b.name, ":t")
               if name == "" then name = "[No Name]" end
 
-              -- 文件图标 + 空格
+              -- 文件图标
               local icon = ""
               if has_devicons then
                   local ext = vim.fn.fnamemodify(name, ":e")
@@ -33,10 +33,12 @@ return {
                   and "%#MiniTablineCurrent#"
                   or "%#MiniTablineHidden#"
 
-              -- 拼接 buffer
-              s = s .. hl .. icon .. name .. " "
+              -- 拼接 buffer: 前后空格 + 图标 + 名字 + 前后空格
+              local buf_text = " " .. icon .. name .. " "
 
-              -- 分隔线 + 前后空格
+              s = s .. hl .. buf_text
+
+              -- 分隔线：前后空格 + "|" + 前后空格
               if i < #bufs then
                   s = s .. "%#MiniTablineSeparator# | "
               end
@@ -45,38 +47,20 @@ return {
           return s
       end
 
-      -- 自动获取 rose-moon 主题颜色
-      local hl_normal = vim.api.nvim_get_hl_by_name("Normal", true)
-      local hl_visual = vim.api.nvim_get_hl_by_name("Visual", true)
-      local hl_comment = vim.api.nvim_get_hl_by_name("Comment", true)
-      local hl_identifier = vim.api.nvim_get_hl_by_name("Identifier", true)
+      -- 关闭 buffer 或退出 Neovim
+      local function close_buffer_or_exit()
+          local bufs = vim.tbl_filter(function(buf)
+              return vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_option(buf, "buflisted")
+          end, vim.api.nvim_list_bufs())
 
-      local function to_hex(rgb)
-          return rgb and string.format("#%06x", rgb) or "#ffffff"
+          if #bufs <= 1 then
+              vim.cmd("qa") -- 退出所有窗口
+          else
+              vim.cmd("bdelete!")
+          end
       end
-
-      -- 当前 buffer 高亮：使用 Visual 或自定义鲜艳色
-      vim.api.nvim_set_hl(0, "MiniTablineCurrent", {
-          bg = "NONE",
-          fg = "#f38ba8", -- rose-moon 的粉色 / 鲜艳色
-          bold = true,
-      })
-
-      -- 未选中 buffer 更暗
-      vim.api.nvim_set_hl(0, "MiniTablineHidden", {
-          bg = "NONE",
-          fg = to_hex(hl_comment.foreground), -- 暗色
-      })
-
-      -- 分隔线颜色
-      vim.api.nvim_set_hl(0, "MiniTablineSeparator", {
-          fg = to_hex(hl_identifier.foreground),
-          bg = "NONE",
-      })
-
-      -- Tabline 背景透明
-      vim.api.nvim_set_hl(0, "TabLine",     { bg = "NONE" })
-      vim.api.nvim_set_hl(0, "TabLineFill", { bg = "NONE" })
+      vim.keymap.set("n", "<leader>q", close_buffer_or_exit, { desc = "Close buffer or exit Neovim" })
   end,
 }
+
 

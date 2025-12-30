@@ -1,6 +1,5 @@
 -- 背景配置
 -- vim.cmd([[colorscheme tokyonight]])
-vim.cmd("colorscheme rose-pine")
 vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 
 -- 高亮组配置
@@ -44,7 +43,7 @@ vim.api.nvim_set_hl(0, "TabLineFill",  { bg = none })
 vim.api.nvim_set_hl(0, "TabLineSel",   { bg = none, bold = true })
 
 -- mini.tabline 使用的高亮
-vim.api.nvim_set_hl(0, "MiniTablineCurrent",  { bg = none, bold = true })
+vim.api.nvim_set_hl(0, "MiniTablineCurrent",  { bg = none,fg = "#f38ba8", bold = true })
 vim.api.nvim_set_hl(0, "MiniTablineVisible",  { bg = none })
 vim.api.nvim_set_hl(0, "MiniTablineHidden",   { bg = none })
 

@@ -46,12 +46,17 @@ keymap.set("n", "<A-l>", ":bnext<CR>", { noremap = true, silent = true })
 keymap.set("n", "<A-h>", ":bprevious<CR>", { noremap = true, silent = true })
 keymap.set("n", "<A-b>", ":bdelete!<CR>", { noremap = true, silent = true })   
 
+
 -- ---------- 替换模式 ---------- ---
 keymap.set('n', 'R', '<Nop>', { noremap = true, silent = true })
 
 -- ---------- 插件 ---------- ---
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+
+-- Zen 
+vim.keymap.set("n", "<leader>z", ":ZenMode<CR>", { desc = "Toggle Zen Mode", noremap = true, silent = true })
+
 
 
 -- Avante

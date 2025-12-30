@@ -25,3 +25,6 @@ make
 <leader>cc 打开Avante
 
 <leader>ch 清除高亮
+
+<leader>z Zen模式
+

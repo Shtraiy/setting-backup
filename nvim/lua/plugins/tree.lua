@@ -19,7 +19,21 @@ return {
                 { key = "R", action = "collapse_all" },
                 { key = "?", action = "toggle_help" },
             },
-            require("nvim-tree").setup {}
+            require("nvim-tree").setup({
+                view = {
+                    width = 30,
+                    side = "left",
+                },
+                update_focused_file = {
+                    enable = true,    -- 自动定位到当前文件
+                    update_cwd = true -- 更新工作目录到当前文件所在目录
+                },
+                actions = {
+                    open_file = {
+                        quit_on_open = false,
+                    },
+                },
+            })
         end
     }
 }

@@ -29,7 +29,6 @@ return {
         VertSplit = { fg = "overlay", bg = "none" },
       },
     })
-
     vim.cmd("colorscheme rose-pine")
   end,
 }
