@@ -128,15 +128,37 @@ return {
             },
         })
 
-        -- LSP 配置
-        local lspconfig = require("lspconfig")
-        local capabilities = require("cmp_nvim_lsp").default_capabilities()
-        local servers = { "pyright", "lua_ls", "rust_analyzer", "clangd", "cmake" }
-        for _, server in ipairs(servers) do
-            lspconfig[server].setup({
+        local capabilities =
+        vim.tbl_deep_extend(
+            "force",
+            vim.lsp.protocol.make_client_capabilities(),
+            require("cmp_nvim_lsp").default_capabilities()
+        )
+
+        local servers = {
+            pyright = {},
+            lua_ls = {
+                settings = {
+                    Lua = {
+                        diagnostics = { globals = { "vim" } },
+                    },
+                },
+            },
+            rust_analyzer = {},
+            clangd = {},
+            cmake = {},
+        }
+
+        for server, config in pairs(servers) do
+            vim.lsp.config(server, vim.tbl_deep_extend("force", {
                 capabilities = capabilities,
-            })
+            }, config))
+
+            vim.lsp.enable(server)
         end
+
+
+
     end
 }
 

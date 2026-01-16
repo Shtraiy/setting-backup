@@ -57,5 +57,7 @@ opt.writebackup = false
 --
 
 
+---自动切换cwd
+opt.autochdir = true
 
 
