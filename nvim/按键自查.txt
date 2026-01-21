@@ -1,6 +1,6 @@
 -- Lspsaga
 
-<leader>g 查看定义
+<leader>gg 查看定义
 
 <leader>gr 查看引用
 

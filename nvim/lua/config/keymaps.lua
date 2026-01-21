@@ -82,7 +82,7 @@ keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { silent = true })
 keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 
 -- 查看定义（不跳转，预览）
-keymap.set("n", "<leader>g", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+keymap.set("n", "<leader>gg", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 
 -- 查看引用
 keymap.set("n", "<leader>gr", "<cmd>Lspsaga finder<CR>", { silent = true })
